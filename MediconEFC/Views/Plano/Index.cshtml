@@ -1,0 +1,144 @@
+﻿@model IEnumerable<MediconEFC.Models.Plano>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="panel panel-primary ">
+    <div class="panel-heading panel panel-primary text-center small">
+        <h3 class="panel-title">Plano</h3>
+    </div>
+    <p class="pCreateNew">
+        <a asp-action="Create" class="btn btn-default">Novo plano</a>
+    </p>
+    <hr />
+    @*<form asp-action="" asp-controller="Plano" method="get" data-ajax="true" data-ajax-update="resultadoAlteracao" data-ajax-Loading="divcarregando">*@
+
+    <div class="row-fluid">
+        <!-- block -->
+        <div class="block">
+            <div class="block-content collapse in">
+                <div class="span12">
+                    <table class="table table-hover table-striped table-bordered" id="tabelaOrdenada">
+                        <thead>
+                            <tr>
+                                <th width="60%">
+                                    @Html.DisplayNameFor(model => model.Nome)
+                                </th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Nome)
+                                    </td>
+                                    <td>
+
+                                        <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-primary carregar hidden-print">Alterar</a>
+                                        <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-info carregar hidden-print">Histórico</a>
+                                        @*<a asp-action="Delete" id="btnDelete" asp-route-id="@item.Id" class="btn btn-danger carregar hidden-print">Delete</a>*@
+                                        <input type="button" id="btnDelete" value="Delete" asp-route-id="@item.Id" class="btn btn-danger cssDelete" />
+
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    @*</form>*@
+</div>
+
+
+<div class="modal fade" data-backdrop="static" id="ModalDelete" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Mensagem de confirmação</h4>
+            </div>
+            <div class="modal-body">
+                <input type="hidden" id="idDelete" value="" />
+                <p> Deseja realmente excluir este plano?</p>
+            </div>
+            <div class="modal-footer">
+                <a asp-action="Delete" id="btnDelete" class="btn btn-danger cssDeleteConfirm carregar hidden-print">Sim</a>
+                <input type="button" id="btnFecharModal" value="Não" class="btn btn-default" />
+
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" data-backdrop="static" id="ModalResult" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="tipoMensagemResult"></h4>
+            </div>
+            <div class="modal-body">
+                <p id="MsgResult"></p>
+            </div>
+            <div class="modal-footer">
+                <input type="button" id="btnFecharModalResult" value="Fechar" class="btn btn-default" />
+
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<div id="resultadoAlteracao">
+</div>
+
+@section Scripts{
+    <script type="text/javascript">
+        $('.cssDelete').on('click', function () {
+            var id = $(this).attr("asp-route-id");
+            $('.cssDeleteConfirm').attr('asp-route-id', id);
+            $('#ModalDelete').modal("show");
+        });
+
+        $('#btnFecharModal').on('click', function () {
+            $("#ModalDelete").modal("hide");
+        });
+
+        $("body").on("click", ".cssDeleteConfirm", function (e) {
+            e.preventDefault();
+
+            $("#ModalDelete").modal("hide");
+
+            var _id = $(this).attr("asp-route-id");
+            $.ajax({
+                contentType: 'application/json; charset=utf-8',
+                dataType: 'json',
+                type: 'GET',
+                url: 'Plano/ExcluirPlano',
+                data: { id: _id },
+                success: function (data) {
+                    //$('#divCarregando').fadeOut('slow');
+                    $("#tipoMensagemResult").text(data.TituloMensagem);
+                    $("#MsgResult").html(data.DescricaoMensagem);
+                    $('#ModalResult').modal("show");
+                }
+            });
+        });
+
+        $("#btnFecharModalResult").click(function () {
+            window.location.href = '@Url.Action("Index", "Plano")';
+        });
+
+
+    </script>
+}

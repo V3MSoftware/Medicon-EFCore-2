@@ -1,0 +1,161 @@
+﻿@model MediconEFC.Models.EquipeViewModel
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="panel panel-primary">
+    <div class="panel panel-primary text-center">
+        <div class="panel-heading">
+            <h3 class="panel-title">Cadastrar nova equipe</h3>
+        </div>
+    </div>
+    <hr />
+
+
+    <div class="row-fluid">
+        <div class="block">
+
+            <div class="form-group">
+                <form asp-action="Create" id="myformCreate">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="form-group col-md-11 col-md-offset-1">
+                        <label asp-for="Equipe.Nome" class="control-label"></label>
+                        <input asp-for="Equipe.Nome" class="form-control" />
+                        <span asp-validation-for="Equipe.Nome" class="text-danger"></span>
+                    </div>
+                    <div class="form-group col-md-11 col-md-offset-1">
+                        <label asp-for="Equipe.Telefone" class="control-label"></label>
+                        <input asp-for="Equipe.Telefone" class="form-control" />
+                        <span asp-validation-for="Equipe.Telefone" class="text-danger"></span>
+                    </div>
+                    <div class="form-group col-md-11 col-md-offset-1">
+                        <label asp-for="Equipe.Contato" class="control-label"></label>
+                        <input asp-for="Equipe.Contato" class="form-control" />
+                        <span asp-validation-for="Equipe.Contato" class="text-danger"></span>
+                    </div>
+                    @*<div class="form-group col-md-11 col-md-offset-1">
+                            <div class="checkbox">
+                                <label>
+                                    <input asp-for="Equipe.Ativo" /> @Html.DisplayNameFor(model => model.Equipe.Ativo)
+                                </label>
+                            </div>
+                        </div>*@
+                    <div class="form-group col-md-11 col-md-offset-1">
+                        <label asp-for="Equipe.Corretor" class="control-label"></label>
+
+                        <select asp-for="Equipe.Corretor" id="cboCorrretor" asp-items="@(new SelectList(Model.listaCorretor,"Id", "Nome"))" class="form-control chosen-select"><option>Selecione</option></select>
+                        <input type="hidden" asp-route-id="" asp-for="Equipe.CorretorId" id="idCorretorSelecionado" />
+                    </div>
+                    <div class="form-group col-md-offset-9">
+                        <input type="submit" value="Create" class="btn btn-success cssDeleteConfirm" />
+                        <a asp-action="Index" class="btn btn-info">Voltar</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Modal -->
+<div class="modal fade" data-backdrop="static" id="ModalResult" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="tipoMensagemResult"></h4>
+            </div>
+            <div class="modal-body">
+                <p id="MsgResult"></p>
+            </div>
+            <div class="modal-footer">
+                <input type="button" id="btnFecharModalResult" value="Fechar" class="btn btn-default" />
+
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+<!-- Modal -->
+<div class="modal fade" data-backdrop="static" id="ModalValidacao" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="tipoMensagemValidacao"></h4>
+            </div>
+            <div class="modal-body">
+                <p id="MsgValidacao"></p>
+            </div>
+            <div class="modal-footer">
+                <input type="button" id="btnFecharModalValidacao" value="Fechar" class="btn btn-default" />
+
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+            ////--------------------------Cbo--------------------------
+            $('.chosen-select').chosen();
+            $('.chosen-select-deselect').chosen({ allow_single_deselect: true });
+
+
+            $("#Equipe_Telefone").inputmask("mask", { "mask": "(99)99999-9999" });
+
+            $('#myformCreate').on('submit', function (e) {
+                e.preventDefault();
+                //Seta o id do corretor selecionado
+                $('#idCorretorSelecionado').val($("#cboCorrretor").val());
+
+                if ($("#cboCorrretor").val() != "Selecione") {
+
+                    //Enviar o formulário inteiro para controller "model"
+                    var formData = $(this).serialize();
+                    if (!formData.match(/=&|=$/)) {
+
+                        $.post('/Equipe/CadastrarEquipe', formData, function (data) {
+                            $("#tipoMensagemResult").text(data.TituloMensagem);
+                            $("#MsgResult").html(data.DescricaoMensagem);
+                            $('#ModalResult').modal("show");
+
+                        });
+                    }
+                }
+                else {
+                    $("#tipoMensagemValidacao").text("Mensgem de alerta");
+                    $("#MsgValidacao").html("Por favor escolha um corretor para finalizar cadastro da equipe!");
+                    $('#ModalValidacao').modal("show");
+
+                }
+            });
+
+            $("#btnFecharModalResult").click(function () {
+                window.location.href = '@Url.Action("Index", "Equipe")';
+            });
+
+
+            $('#btnFecharModalValidacao').on('click', function () {
+                $("#ModalValidacao").modal("hide");
+            });
+
+        });
+    </script>
+
+}

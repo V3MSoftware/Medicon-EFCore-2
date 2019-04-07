@@ -1,0 +1,200 @@
+﻿@model MediconEFC.Models.Cliente
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="panel panel-primary">
+    <div class="panel panel-primary text-center">
+        <div class="panel-heading">
+            <h3 class="panel-title">Alterar cliente</h3>
+        </div>
+    </div>
+    <hr />
+    <div class="row-fluid">
+        <div class="block">
+            <div class="form-group">
+                <form asp-action="Edit" id="myformCreate">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <input type="hidden" asp-for="Id" />
+                    <div class="form-group col-md-11 col-md-offset-1">
+                        <label asp-for="Nome" class="control-label"></label>
+                        <input asp-for="Nome" class="form-control" />
+                        <span asp-validation-for="Nome" class="text-danger"></span>
+                    </div>
+                    <div class="form-group col-md-11 col-md-offset-1">
+                        <label asp-for="Cpf" class="control-label"></label>
+                        <input asp-for="Cpf" class="form-control" />
+                        <span asp-validation-for="Cpf" class="text-danger"></span>
+                    </div>
+                    <div class="form-group col-md-11 col-md-offset-1">
+                        <label asp-for="Cep" class="control-label"></label>
+                        <input asp-for="Cep" class="form-control" />
+                        <span asp-validation-for="Cep" class="text-danger"></span>
+                    </div>
+                    <div class="form-group col-md-11 col-md-offset-1">
+                        <label asp-for="Endereco" class="control-label"></label>
+                        <input asp-for="Endereco" class="form-control" />
+                        <span asp-validation-for="Endereco" class="text-danger"></span>
+                    </div>
+                    <div class="form-group col-md-11 col-md-offset-1">
+                        <label asp-for="Numero" class="control-label"></label>
+                        <input asp-for="Numero" class="form-control" />
+                        <span asp-validation-for="Numero" class="text-danger"></span>
+                    </div>
+                    <div class="form-group col-md-11 col-md-offset-1">
+                        <label asp-for="Complemento" class="control-label"></label>
+                        <input asp-for="Complemento" class="form-control" />
+                        <span asp-validation-for="Complemento" class="text-danger"></span>
+                    </div>
+                    <div class="form-group col-md-11 col-md-offset-1">
+                        <label asp-for="Bairro" class="control-label"></label>
+                        <input asp-for="Bairro" class="form-control" />
+                        <span asp-validation-for="Bairro" class="text-danger"></span>
+                    </div>
+                    <div class="form-group col-md-11 col-md-offset-1">
+                        <label asp-for="Cidade" class="control-label"></label>
+                        <input asp-for="Cidade" class="form-control" />
+                        <span asp-validation-for="Cidade" class="text-danger"></span>
+                    </div>
+                    <div class="form-group col-md-11 col-md-offset-1">
+                        <label asp-for="Estado" class="control-label"></label>
+                        <input asp-for="Estado" class="form-control" />
+                        <span asp-validation-for="Estado" class="text-danger"></span>
+                    </div>
+                    <div class="form-group col-md-11 col-md-offset-1">
+                        <label asp-for="Telefone" class="control-label"></label>
+                        <input asp-for="Telefone" class="form-control" />
+                        <span asp-validation-for="Telefone" class="text-danger"></span>
+                    </div>
+                    <div class="form-group col-md-11 col-md-offset-1">
+                        <label asp-for="Celular" class="control-label"></label>
+                        <input asp-for="Celular" class="form-control" />
+                        <span asp-validation-for="Celular" class="text-danger"></span>
+                    </div>
+                    <div class="form-group col-md-11 col-md-offset-1">
+                        <label asp-for="Email" class="control-label"></label>
+                        <input asp-for="Email" class="form-control" />
+                        <span asp-validation-for="Email" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group col-md-11 col-md-offset-1">
+                        <label asp-for="Observacao" class="control-label"></label>
+                        <input asp-for="Observacao" class="form-control" />
+                        <span asp-validation-for="Observacao" class="text-danger"></span>
+                    </div>
+                    <div class="form-group col-md-11 col-md-offset-1">
+                        <div class="checkbox">
+                            <label>
+                                <input asp-for="Ativo" /> @Html.DisplayNameFor(model => model.Ativo)
+                            </label>
+                        </div>
+                    </div>
+                    <div class="form-group col-md-offset-9">
+                        <input type="submit" value="Alterar" class="btn btn-success cssEdit" />
+                        <a asp-action="Index" class="btn btn-info">Voltar</a>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+<!-- Modal -->
+<div class="modal fade" data-backdrop="static" id="ModalResult" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="tipoMensagemResult"></h4>
+            </div>
+            <div class="modal-body">
+                <p id="MsgResult"></p>
+            </div>
+            <div class="modal-footer">
+                <input type="button" id="btnFecharModalResult" value="Fechar" class="btn btn-default" />
+
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<!-- Modal Confirm -->
+<div class="modal fade" data-backdrop="static" id="ModalConfirm" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="tipoMensagemConfirm"></h4>
+            </div>
+            <div class="modal-body">
+                <p id="MsgConfirm"></p>
+                <div class="modal-footer">
+                    <input type="submit" value="Sim" class="btn btn-success cssEditConfirm" />
+                    <input type="button" id="btnFecharModal" value="Não" class="btn btn-default" />
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+@section Scripts{
+
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+
+    <script type="text/javascript">
+        $(document).ready(function () {            
+            $("#Telefone").inputmask("mask", { "mask": "(99)9999-9999" });
+            $("#Celular").inputmask("mask", { "mask": "(99)99999-9999" });
+            $("#Cep").inputmask("mask", { "mask": "99.999-999" });
+            $("#Cpf").inputmask("mask", { "mask": "999.999.999-99" });
+
+            $('.cssEdit').on('click', function (e) {
+                e.preventDefault();
+                $("#tipoMensagemConfirm").text("Mensagem de confirmação");
+                $("#MsgConfirm").html("Deseja realmente alterar cliente?");
+                $('#ModalConfirm').modal("show");
+
+            });
+
+            $('#btnFecharModal').on('click', function () {
+                $("#ModalConfirm").modal("hide");
+            });
+
+            $('.cssEditConfirm').on('click', function (e) {
+                e.preventDefault();
+                //Enviar o formulário inteiro para controller "model"
+                var formData = $('#myformCreate').serialize();
+                if (!formData.match(/=&|=$/)) {
+
+                    $("#ModalConfirm").modal("hide");
+
+                    $.post('/Cliente/AlterarCliente', formData, function (data) {
+                        $("#tipoMensagemResult").text(data.TituloMensagem);
+                        $("#MsgResult").html(data.DescricaoMensagem);
+                        $('#ModalResult').modal("show");
+
+                    });
+                }
+            });
+
+
+            $("#btnFecharModalResult").click(function () {
+                window.location.href = '@Url.Action("Index", "Cliente")';
+            });
+
+
+        });
+    </script>
+}

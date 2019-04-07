@@ -1,0 +1,19 @@
+﻿
+--> 1° 
+PM> Enable-Migrations
+Enable-Migrations is obsolete. Use Add-Migration to start using Migrations.
+--> 2° 
+PM> Add-Migration
+--> 3° 
+PM> Update-Database
+
+
+//========================================MediconEFCContext===================================================================================================
+protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Equipe>()                
+                .Ignore(b => b.CorretorId)            
+                .Ignore(b => b.Corretor);
+        }
+
+//===========================================================================================================================================================

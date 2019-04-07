@@ -1,0 +1,82 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Migrations\20181106121741_AllEntityMediconInitial.cs" />
+    <Compile Remove="Migrations\20181106121741_AllEntityMediconInitial.Designer.cs" />
+    <Compile Remove="Migrations\20181106124040_AllEntityMediconInitialDeleteTableTipos.cs" />
+    <Compile Remove="Migrations\20181106124040_AllEntityMediconInitialDeleteTableTipos.Designer.cs" />
+    <Compile Remove="Migrations\20181113125459_AJustesBanco.cs" />
+    <Compile Remove="Migrations\20181113125459_AJustesBanco.Designer.cs" />
+    <Compile Remove="Migrations\20181113142759_AJustesBanco.cs" />
+    <Compile Remove="Migrations\20181113142759_AJustesBanco.Designer.cs" />
+    <Compile Remove="Migrations\20181113163351_PopularBaseDeDados.cs" />
+    <Compile Remove="Migrations\20181113163351_PopularBaseDeDados.Designer.cs" />
+    <Compile Remove="Migrations\20181113163925_Initial_PopularBaseDeDados.cs" />
+    <Compile Remove="Migrations\20181113163925_Initial_PopularBaseDeDados.Designer.cs" />
+    <Compile Remove="Migrations\20181113164855_Initial_PopularBaseDeDados.cs" />
+    <Compile Remove="Migrations\20181113164855_Initial_PopularBaseDeDados.Designer.cs" />
+    <Compile Remove="Migrations\20181113165454_Initial_PopularBaseDeDados.cs" />
+    <Compile Remove="Migrations\20181113165454_Initial_PopularBaseDeDados.Designer.cs" />
+    <Compile Remove="Migrations\20181113170142_Initial_PopularBaseDeDados.cs" />
+    <Compile Remove="Migrations\20181113170142_Initial_PopularBaseDeDados.Designer.cs" />
+    <Compile Remove="Migrations\20181113170303_Initial_PopularBaseDeDados.cs" />
+    <Compile Remove="Migrations\20181113170303_Initial_PopularBaseDeDados.Designer.cs" />
+    <Compile Remove="Migrations\20181113171914_Initial_PopularBaseDeDados.cs" />
+    <Compile Remove="Migrations\20181113171914_Initial_PopularBaseDeDados.Designer.cs" />
+    <Compile Remove="Migrations\20181113174721_Initial_PopularBaseDeDados.cs" />
+    <Compile Remove="Migrations\20181113174721_Initial_PopularBaseDeDados.Designer.cs" />
+    <Compile Remove="Migrations\20181113175923_Initial_DataBase.cs" />
+    <Compile Remove="Migrations\20181113175923_Initial_DataBase.Designer.cs" />
+    <Compile Remove="Migrations\20181219120632_AjustesNoModeloDeDadosPrecoPlano.cs" />
+    <Compile Remove="Migrations\20181219120632_AjustesNoModeloDeDadosPrecoPlano.Designer.cs" />
+    <Compile Remove="Migrations\20181221114923_AjustesNoModeloDeDadosPrecoPlano_02.cs" />
+    <Compile Remove="Migrations\20181221114923_AjustesNoModeloDeDadosPrecoPlano_02.Designer.cs" />
+    <Compile Remove="Migrations\20181221170005_AjustesNoModeloDeDadosPrecoPlano_03.cs" />
+    <Compile Remove="Migrations\20181221170005_AjustesNoModeloDeDadosPrecoPlano_03.Designer.cs" />
+    <Compile Remove="Migrations\20181221170321_AjustesNoModeloDeDadosPrecoPlano_04.cs" />
+    <Compile Remove="Migrations\20181221170321_AjustesNoModeloDeDadosPrecoPlano_04.Designer.cs" />
+    <Compile Remove="Migrations\20181221170513_AjustesNoModeloDeDadosPrecoPlano_05.cs" />
+    <Compile Remove="Migrations\20181221170513_AjustesNoModeloDeDadosPrecoPlano_05.Designer.cs" />
+    <Compile Remove="Migrations\20181221170929_AjustesNoModeloDeDadosPrecoPlano_06.cs" />
+    <Compile Remove="Migrations\20181221170929_AjustesNoModeloDeDadosPrecoPlano_06.Designer.cs" />
+    <Compile Remove="Migrations\20181221172454_AjustesNoModeloDeDadosProposta.cs" />
+    <Compile Remove="Migrations\20181221172454_AjustesNoModeloDeDadosProposta.Designer.cs" />
+    <Compile Remove="Models\Enums\AbrangenciaPlano.cs" />
+    <Compile Remove="Models\Enums\TipoAcomodacao.cs" />
+    <Compile Remove="Models\Enums\TipoContrato.cs" />
+    <Compile Remove="Models\Enums\TipoDependente.cs" />
+    <Compile Remove="Models\Enums\TipoPlano.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Remove="Views\Plano\Delete.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="wwwroot\js\jquery.inputmask\jquery.inputmask.date.extensions.js" />
+    <None Include="wwwroot\js\jquery.inputmask\jquery.inputmask.extensions.js" />
+    <None Include="wwwroot\js\jquery.inputmask\jquery.inputmask.js" />
+    <None Include="wwwroot\js\jquery.inputmask\jquery.inputmask.numeric.extensions.js" />
+    <None Include="wwwroot\js\jquery.inputmask\jquery.inputmask.phone.extensions.js" />
+    <None Include="wwwroot\js\jquery.inputmask\jquery.inputmask.regex.extensions.js" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="jQuery.InputMask" Version="4.0.3" />
+    <PackageReference Include="Microsoft.AspNetCore.App" />
+    <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.1.2" PrivateAssets="All" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="2.1.4" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.1.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Update="Views\Shared\_Layout - Copy.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+  </ItemGroup>
+
+</Project>

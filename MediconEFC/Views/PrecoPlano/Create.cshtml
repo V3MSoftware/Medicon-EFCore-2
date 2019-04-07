@@ -1,0 +1,187 @@
+﻿@model MediconEFC.Models.PrecoPlanoViewModel
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<div class="panel panel-primary">
+    <div class="panel panel-primary text-center">
+        <div class="panel-heading">
+            <h3 class="panel-title">Cadastrar preço plano</h3>
+        </div>
+    </div>
+    <hr />
+
+
+    <div class="row-fluid">
+        <div class="block">
+
+            <div class="form-group">
+                <form asp-action="Create" id="myformCreate">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="form-group col-md-11 col-md-offset-1">
+                        <label asp-for="precoPlano.FaixaEtaria" class="control-label"></label>
+
+                        <select asp-for="precoPlano.FaixaEtaria" id="cboFaixaEtaria" asp-items="@(new SelectList(Model.listaFaixaEtaria,"Id", "Descricao"))" class="form-control chosen-select"><option>Selecione</option></select>
+                        <input type="hidden" asp-route-id="" asp-for="precoPlano.FaixaEtariaId" id="idFaixaEtariaSelecionada" />
+                    </div>
+                    <div class="form-group col-md-11 col-md-offset-1">
+                        <label asp-for="precoPlano.TipoAcomodacao" class="control-label"></label>
+
+                        <select asp-for="precoPlano.TipoAcomodacao" id="cboTipoAcomodacao" asp-items="@(new SelectList(Model.listaTipoAcomodacao,"Id", "Nome"))" class="form-control chosen-select"><option>Selecione</option></select>
+                        <input type="hidden" asp-route-id="" asp-for="precoPlano.TipoAcomodacao" id="idTipoAcomodacaoSelecionado" />
+                    </div>
+                    <div class="form-group col-md-11 col-md-offset-1">
+                        <label asp-for="precoPlano.AbrangenciaPlano" class="control-label"></label>
+
+                        <select asp-for="precoPlano.AbrangenciaPlano" id="cboAbrangenciaPlano" asp-items="@(new SelectList(Model.listaAbrangenciaPlano,"Id", "Nome"))" class="form-control chosen-select"><option>Selecione</option></select>
+                        <input type="hidden" asp-route-id="" asp-for="precoPlano.AbrangenciaPlano" id="idAbrangenciaPlanoSelecionado" />
+                    </div>
+                    <div class="form-group col-md-11 col-md-offset-1">
+                        <label asp-for="precoPlano.TipoContrato" class="control-label"></label>
+
+                        <select asp-for="precoPlano.TipoContrato" id="cboTipoContrato" asp-items="@(new SelectList(Model.listaTipoContrato,"Id", "Nome"))" class="form-control chosen-select"><option>Selecione</option></select>
+                        <input type="hidden" asp-route-id="" asp-for="precoPlano.TipoContrato" id="idTipoContratoSelecionado" />
+                    </div>
+                    <div class="form-group col-md-11 col-md-offset-1">
+                        <label asp-for="precoPlano.TipoPlano" class="control-label"></label>
+
+                        <select asp-for="precoPlano.TipoPlano" id="cboTipoPlano" asp-items="@(new SelectList(Model.listaTipoPlano,"Id", "Nome"))" class="form-control chosen-select"><option>Selecione</option></select>
+                        <input type="hidden" asp-route-id="" asp-for="precoPlano.TipoPlano" id="idTipoPlanoSelecionado" />
+                    </div>
+                    <div class="form-group col-md-11 col-md-offset-1">
+                        <label asp-for="precoPlano.Valor" class="control-label"></label>
+                        <input asp-for="precoPlano.Valor" class="form-control" />
+                        <span asp-validation-for="precoPlano.Valor" class="text-danger"></span>
+                    </div>
+                    <div class="form-group col-md-11 col-md-offset-1">
+                        <label asp-for="precoPlano.Observacao" class="control-label"></label>
+                        <input asp-for="precoPlano.Observacao" class="form-control" />
+                        <span asp-validation-for="precoPlano.Observacao" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group col-md-offset-9">
+                        <input type="submit" value="Create" class="btn btn-success cssDeleteConfirm" />
+                        <a asp-action="Index" class="btn btn-info">Voltar</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Modal -->
+<div class="modal fade" data-backdrop="static" id="ModalResult" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="tipoMensagemResult"></h4>
+            </div>
+            <div class="modal-body">
+                <p id="MsgResult"></p>
+            </div>
+            <div class="modal-footer">
+                <input type="button" id="btnFecharModalResult" value="Fechar" class="btn btn-default" />
+
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+<!-- Modal -->
+<div class="modal fade" data-backdrop="static" id="ModalValidacao" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="tipoMensagemValidacao"></h4>
+            </div>
+            <div class="modal-body">
+                <p id="MsgValidacao"></p>
+            </div>
+            <div class="modal-footer">
+                <input type="button" id="btnFecharModalValidacao" value="Fechar" class="btn btn-default" />
+
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            ////--------------------------Cbo--------------------------
+            $('.chosen-select').chosen();
+            $('.chosen-select-deselect').chosen({ allow_single_deselect: true });
+
+            $('#myformCreate').on('submit', function (e) {
+                e.preventDefault();
+                //Seta o id do corretor selecionado
+                $('#idFaixaEtariaSelecionada').val($("#cboFaixaEtaria").val());
+                $('#idTipoAcomodacaoSelecionado').val($("#cboTipoAcomodacao").val());
+                $('#idAbrangenciaPlanoSelecionado').val($("#cboAbrangenciaPlano").val());
+                $('#idTipoContratoSelecionado').val($("#cboTipoContrato").val());
+                $('#idTipoPlanoSelecionado').val($("#cboTipoPlano").val());
+
+                if ($("#cboFaixaEtaria").val() == 'Selecione') {
+                    $("#tipoMensagemValidacao").text("Mensgem de alerta");
+                    $("#MsgValidacao").html("Por favor escolha uma Faixa Etária para finalizar cadastro!");
+                    $('#ModalValidacao').modal("show");
+                } else if ($("#cboTipoAcomodacao").val() == 'Selecione') {
+                    $("#tipoMensagemValidacao").text("Mensgem de alerta");
+                    $("#MsgValidacao").html("Por favor escolha um Tipo acomodação para finalizar cadastro!");
+                    $('#ModalValidacao').modal("show");
+                } else if ($("#cboAbrangenciaPlano").val() == 'Selecione') {
+                    $("#tipoMensagemValidacao").text("Mensgem de alerta");
+                    $("#MsgValidacao").html("Por favor escolha Abrangência Plano para finalizar cadastro!");
+                    $('#ModalValidacao').modal("show");
+                } else if ($("#cboTipoContrato").val() == 'Selecione') {
+                    $("#tipoMensagemValidacao").text("Mensgem de alerta");
+                    $("#MsgValidacao").html("Por favor escolha Tipo Contrato para finalizar cadastro!");
+                    $('#ModalValidacao').modal("show");
+                } else if ($("#cboTipoPlano").val() == 'Selecione') {
+                    $("#tipoMensagemValidacao").text("Mensgem de alerta");
+                    $("#MsgValidacao").html("Por favor escolha Tipo Plano para finalizar cadastro!");
+                    $('#ModalValidacao').modal("show");
+                }
+                else {
+                    //Enviar o formulário inteiro para controller "model"
+                    var formData = $(this).serialize();
+                    if (!formData.match(/=&|=$/)) {
+
+                        $.post('/PrecoPlano/CadastrarPrecoPlano', formData, function (data) {
+                            $("#tipoMensagemResult").text(data.TituloMensagem);
+                            $("#MsgResult").html(data.DescricaoMensagem);
+                            $('#ModalResult').modal("show");
+
+                        });
+                    }
+                }
+            });
+
+             $("#btnFecharModalResult").click(function () {
+                window.location.href = '@Url.Action("Index", "PrecoPlano")';
+            });
+
+
+            $('#btnFecharModalValidacao').on('click', function () {
+                $("#ModalValidacao").modal("hide");
+            });
+
+        });
+    </script>
+}

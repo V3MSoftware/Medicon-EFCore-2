@@ -1,0 +1,139 @@
+﻿@model MediconEFC.Models.FaixaEtaria
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="panel panel-primary">
+    <div class="panel panel-primary text-center">
+        <div class="panel-heading">
+            <h3 class="panel-title">Alterar faixa etária</h3>
+        </div>
+    </div>
+    <hr />
+
+    <div class="row-fluid">
+        <div class="block">
+
+            <div class="form-group">
+                <form asp-action="Edit" id="myformCreate">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <input type="hidden" asp-for="Id" />
+                    <div class="form-group col-md-11 col-md-offset-1">
+                        <label asp-for="Descricao" class="control-label"></label>
+                        <input asp-for="Descricao" class="form-control" />
+                        <span asp-validation-for="Descricao" class="text-danger"></span>
+                    </div>
+                    <div class="form-group col-md-offset-9">
+                        <input type="submit" value="Alterar" class="btn btn-success cssEdit" />
+                        <a asp-action="Index" class="btn btn-info">Voltar</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+<!-- Modal -->
+<div class="modal fade" data-backdrop="static" id="ModalResult" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="tipoMensagemResult"></h4>
+            </div>
+            <div class="modal-body">
+                <p id="MsgResult"></p>
+            </div>
+            <div class="modal-footer">
+                <input type="button" id="btnFecharModalResult" value="Fechar" class="btn btn-default" />
+
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<!-- Modal Confirm -->
+<div class="modal fade" data-backdrop="static" id="ModalConfirm" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="tipoMensagemConfirm"></h4>
+            </div>
+            <div class="modal-body">
+                <p id="MsgConfirm"></p>
+                <div class="modal-footer">
+                    <input type="submit" value="Sim" class="btn btn-success cssEditConfirm" />
+                    <input type="button" id="btnFecharModal" value="Não" class="btn btn-default" />
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+            $('.cssEdit').on('click', function (e) {
+                e.preventDefault();
+                $("#tipoMensagemConfirm").text("Mensagem de confirmação");
+                $("#MsgConfirm").html("Deseja realmente alterar faixa etária?");
+                $('#ModalConfirm').modal("show");
+
+            });
+
+            $('#btnFecharModal').on('click', function () {
+                $("#ModalConfirm").modal("hide");
+            });
+
+
+            $('.cssEditConfirm').on('click', function (e) {
+                e.preventDefault();
+
+                    //Enviar o formulário inteiro para controller "model"
+                    var formData = $('#myformCreate').serialize();
+                    if (!formData.match(/=&|=$/)) {
+
+                        $("#ModalConfirm").modal("hide");
+
+                        $.post('/FaixaEtaria/AlterarFaixaEtaria', formData, function (data) {
+                            $("#tipoMensagemResult").text(data.TituloMensagem);
+                            $("#MsgResult").html(data.DescricaoMensagem);
+                            $('#ModalResult').modal("show");
+
+                        });
+                    }
+            });
+
+            $("#btnFecharModalResult").click(function () {
+                window.location.href = '@Url.Action("Index", "FaixaEtaria")';
+            });
+
+        });
+
+    </script>
+
+}
+
+
+
+
+
+
+
+

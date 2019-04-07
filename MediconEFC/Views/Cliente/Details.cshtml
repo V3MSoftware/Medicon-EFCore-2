@@ -1,0 +1,111 @@
+﻿@model MediconEFC.Models.Cliente
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="panel panel-primary">
+    <div class="panel panel-primary text-center">
+        <div class="panel-heading">
+            <h3 class="panel-title">Histórico cliente</h3>
+        </div>
+    </div>
+    <hr />
+    <div class="row-fluid">
+        <div class="block">
+            <div class="form-group col-md-12">
+                <dl class="dl-horizontal">
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Nome)
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.Nome)
+                    </dd>
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Cpf)
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.Cpf)
+                    </dd>
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Cep)
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.Cep)
+                    </dd>
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Endereco)
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.Endereco)
+                    </dd>
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Numero)
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.Numero)
+                    </dd>
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Complemento)
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.Complemento)
+                    </dd>
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Bairro)
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.Bairro)
+                    </dd>
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Cidade)
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.Cidade)
+                    </dd>
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Estado)
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.Estado)
+                    </dd>
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Telefone)
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.Telefone)
+                    </dd>
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Celular)
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.Celular)
+                    </dd>
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Email)
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.Email)
+                    </dd>
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Observacao)
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.Observacao)
+                    </dd>
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Ativo)
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.Ativo)
+                    </dd>
+                </dl>
+            </div>
+            <div class="form-group col-md-offset-10">
+                <a asp-action="Edit" class="btn btn-primary" asp-route-id="@Model.Id">Edit</a>
+                <a asp-action="Index" class="btn btn-info">Voltar</a>
+            </div>
+        </div>
+    </div>
+</div>
