@@ -10,9 +10,6 @@ namespace MediconEFC.Models
 {
     public class UploadArquivo
     {
-        /// <summary>
-        /// TODO: Classe para importar arquivo Ex: NosConformes
-        /// </summary>
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         [Key]
         public int Id { get; set; }

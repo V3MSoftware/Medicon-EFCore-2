@@ -22,6 +22,15 @@ namespace MediconEFC.Services
 
         public async Task<List<Plano>> FindAllAsync()
         {
+            var result_Post = (from p in _context.Plano
+                               select new
+                               {
+                                   p.Id,
+                                   p.Nome
+                               }).Take(5).OrderByDescending(ps => ps.Id);
+
+
+
             return await _context.Plano.ToListAsync();
         }
 

@@ -300,7 +300,7 @@ namespace MediconEFC.Data
              * nem sempre gravar na sequencia certa 123 ec. Fazer por etapas e consultando o Id para ir alterando as lista acima
              * =============================================OBS: ===================================================*/
 
-           ////================================1° Etapa============
+            ////================================1° Etapa============
             if (!_context.AbrangenciaPlano.Any())
                 _context.AbrangenciaPlano.AddRange(abrangenciaPlanos);
             if (!_context.TipoAcomodacao.Any())
@@ -324,15 +324,15 @@ namespace MediconEFC.Data
 
             if (!_context.FaixaEtaria.Any())
                 _context.FaixaEtaria.AddRange(listafaixaEtaria);
-            ////////================================3° Etapa============
+            // ////////================================3° Etapa============
             if (!_context.PrecoPlano.Any())
                 _context.PrecoPlano.AddRange(listaPrecoPlano);
-            ////////================================4° Etapa============
+            // ////////================================4° Etapa============
             if (!_context.Dependente.Any())
                 _context.Dependente.AddRange(listaDependente);
-            //////////================================5° Etapa============
-            if (!_context.Proposta.Any())
-                _context.Proposta.AddRange(listaProposta);
+            // //////////================================5° Etapa============
+             if (!_context.Proposta.Any())
+                 _context.Proposta.AddRange(listaProposta);
 
 
             _context.SaveChanges();

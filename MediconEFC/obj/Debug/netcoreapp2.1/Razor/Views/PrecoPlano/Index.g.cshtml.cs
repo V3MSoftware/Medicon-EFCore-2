@@ -69,7 +69,7 @@ using MediconEFC.Models;
             WriteLiteral("\r\n\r\n<div class=\"panel panel-primary \">\r\n    <div class=\"panel-heading panel panel-primary text-center small\">\r\n        <h3 class=\"panel-title\">Equipe</h3>\r\n    </div>\r\n    <p class=\"pCreateNew\">\r\n        ");
             EndContext();
             BeginContext(353, 62, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "16268ac4ff8b42c3a6c7627b6bc21f13", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "ea6306dc4b2e4a57af64a248e5500ccc", async() => {
                 BeginContext(400, 11, true);
                 WriteLiteral("Nova equipe");
                 EndContext();
@@ -274,7 +274,7 @@ using MediconEFC.Models;
             WriteLiteral("\r\n                                </td>\r\n                                <td>\r\n                                    ");
             EndContext();
             BeginContext(3953, 113, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "f575b6d2e08e4399a0316c899815d601", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "8af9461c9ca64aa280932b6d61b20a2c", async() => {
                 BeginContext(4055, 7, true);
                 WriteLiteral("Alterar");
                 EndContext();
@@ -310,7 +310,7 @@ using MediconEFC.Models;
             WriteLiteral("\r\n                                    ");
             EndContext();
             BeginContext(4104, 115, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "44e0c97688884a24ab5978a7a71e379c", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "fddc7830383b4fe597fa9438157093cf", async() => {
                 BeginContext(4206, 9, true);
                 WriteLiteral("Histórico");
                 EndContext();

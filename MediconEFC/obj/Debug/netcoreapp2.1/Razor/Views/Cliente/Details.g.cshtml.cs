@@ -360,7 +360,7 @@ using MediconEFC.Models;
             WriteLiteral("\r\n                    </dd>\r\n                </dl>\r\n            </div>\r\n            <div class=\"form-group col-md-offset-10\">\r\n                ");
             EndContext();
             BeginContext(3983, 78, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "b379d1a8fe6940ff9436a702edf439bf", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "d88b14ed83854f9bb7541186fb0db2b7", async() => {
                 BeginContext(4053, 4, true);
                 WriteLiteral("Edit");
                 EndContext();
@@ -396,7 +396,7 @@ using MediconEFC.Models;
             WriteLiteral("\r\n                ");
             EndContext();
             BeginContext(4079, 53, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "3da9a17df8404922a45e7104cd95024d", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "52341eb58b1943c6a227587087272640", async() => {
                 BeginContext(4122, 6, true);
                 WriteLiteral("Voltar");
                 EndContext();

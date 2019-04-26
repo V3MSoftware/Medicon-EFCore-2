@@ -72,7 +72,7 @@ using MediconEFC.Models;
             WriteLiteral("\r\n\r\n<div class=\"panel panel-primary \">\r\n    <div class=\"panel-heading panel panel-primary text-center small\">\r\n        <h3 class=\"panel-title\">Faixa etária</h3>\r\n    </div>\r\n    <p class=\"pCreateNew\">\r\n        ");
             EndContext();
             BeginContext(351, 68, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "29ac088e7cab402583b2557741ac2fc3", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "26d1059f67694564b0a6e34a04f55937", async() => {
                 BeginContext(398, 17, true);
                 WriteLiteral("Nova faixa etária");
                 EndContext();
@@ -137,7 +137,7 @@ using MediconEFC.Models;
             WriteLiteral("\r\n                                    </td>\r\n                                    <td>\r\n\r\n                                        ");
             EndContext();
             BeginContext(1490, 102, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "589373c9442d46e9b829ae29ee98f2ae", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "b6f6d7b2ff694a7f8c1f875a4cfad17b", async() => {
                 BeginContext(1581, 7, true);
                 WriteLiteral("Alterar");
                 EndContext();
@@ -173,7 +173,7 @@ using MediconEFC.Models;
             WriteLiteral("\r\n                                        ");
             EndContext();
             BeginContext(1634, 104, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "935a6557f42a4560a272ce55643640da", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "838b2f0ac8964292942a82e5ea1884bc", async() => {
                 BeginContext(1725, 9, true);
                 WriteLiteral("Histórico");
                 EndContext();
@@ -246,7 +246,7 @@ WriteAttributeValue("", 1845, item.Id, 1845, 8, false);
                 ");
             EndContext();
             BeginContext(2728, 107, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "b4f6515945ad4a439d8e6d68aa8f89ad", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "a86ccbb5216d42cea0629383317cddb3", async() => {
                 BeginContext(2828, 3, true);
                 WriteLiteral("Sim");
                 EndContext();
